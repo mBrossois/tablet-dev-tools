@@ -9,6 +9,6 @@
 <script setup lang="ts">
   
   function send() {
-    console.log("nee medsag")
+    console.error("nee medsag")
   }
 </script>
