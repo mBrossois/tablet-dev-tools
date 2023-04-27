@@ -26,25 +26,25 @@ My new Nuxt module for doing amazing things.
 
 ## Quick Setup
 
-1. Add `tablet-dev-tools` dependency to your project
+1. Add `tablet-developer-tools` dependency to your project
 
 ```bash
 # Using pnpm
-pnpm add -D tablet-dev-tools
+pnpm add -D tablet-developer-tools
 
 # Using yarn
-yarn add --dev tablet-dev-tools
+yarn add --dev tablet-developer-tools
 
 # Using npm
-npm install --save-dev tablet-dev-tools
+npm install --save-dev tablet-developer-tools
 ```
 
-2. Add `tablet-dev-tools` to the `modules` section of `nuxt.config.ts`
+2. Add `tablet-developer-tools` to the `modules` section of `nuxt.config.ts`
 
 ```js
 export default defineNuxtConfig({
   modules: [
-    'tablet-dev-tools'
+    'tablet-developer-tools'
   ]
 })
 ```
