@@ -12,10 +12,12 @@ export default defineNuxtModule<ModuleOptions>({
   defaults: {},
   setup (options, nuxt) {
     const resolver = createResolver(import.meta.url)
-
-    addComponent({
-      name: 'TabletDevToolsMainComponent', // name of the component to be used in vue templates
-      filePath: resolver.resolve('runtime/components/tablet-dev-tools-main.vue')
-    })
+    if(process.env.NODE_ENV === 'development') {
+      addComponent({
+        name: 'TabletDevToolsMainComponent', // name of the component to be used in vue templates
+        filePath: resolver.resolve('runtime/components/tablet-dev-tools-main.vue')
+      })
+    }
+    
   }
 })
