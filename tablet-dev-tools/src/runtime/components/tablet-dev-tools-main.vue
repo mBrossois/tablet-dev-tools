@@ -25,17 +25,17 @@ const originalConsoleLog = console.log
 const originalConsoleWarn = console.warn
 const originalConsoleError = console.error
 
-console.log = function() {
-    logs.value.push({type: "log", message: [...arguments]})
-    originalConsoleLog.apply(console, arguments)
+console.log = function(...args) {
+    logs.value.push({type: "log", message: [...args]})
+    originalConsoleLog.apply(console, args)
 }
 
-console.warn = function(args) {
+console.warn = function(...args) {
     logs.value.push({type: "warn", message: [...args]})
     originalConsoleWarn.apply(console, args)
 }
 
-console.error = function(args) {
+console.error = function(...args) {
     logs.value.push({type: "error", message: [...args]})
     originalConsoleError.apply(console, args)
 }

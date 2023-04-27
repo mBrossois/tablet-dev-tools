@@ -1,0 +1,5 @@
+{
+  "vetur.format.options.useTabs": false,
+  "editor.tabSize": 2,
+  "html.format.wrapAttributesIndentSize": 2
+}
