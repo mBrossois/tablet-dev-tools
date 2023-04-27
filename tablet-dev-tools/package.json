@@ -1,5 +1,5 @@
 {
-  "name": "nuxt/tablet-dev-tools",
+  "name": "tablet-dev-tools",
   "version": "1.0.0",
   "description": "A Nuxt module for debugging on tablets",
   "repository": "mBrossois/tablet-dev-tools",
