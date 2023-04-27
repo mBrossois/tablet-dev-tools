@@ -1,43 +1,43 @@
 <template>
-<div class="log-component">
-    <button @click="toggle">C</button>
+    <div class="log-component">
+        <button @click="toggle">C</button>
 
-    <div :class="{open: isOpen}" class="log-inner-component">
-        <div class="log-container">
-            <div v-for="log, index in logs" :key="index" class="log-screen">
-                <p v-for="messsage, messageIndex in log.message" :key="messageIndex" :class="log.type">
-                    <strong v-if="log.type==='log'">Log:</strong> 
-                    <strong v-else-if="log.type==='warn'">Warning:</strong> 
-                    <strong v-else-if="log.type==='error'">Error:</strong> 
-                    {{log.message[messageIndex]}}
-                </p>
+        <div :class="{open: isOpen}" class="log-inner-component">
+            <div class="log-container">
+                <div v-for="log, index in logs" :key="index" class="log-screen">
+                    <p v-for="messsage, messageIndex in log.message" :key="messageIndex" :class="log.type">
+                        <strong v-if="log.type==='log'">Log:</strong> 
+                        <strong v-else-if="log.type==='warn'">Warning:</strong> 
+                        <strong v-else-if="log.type==='error'">Error:</strong> 
+                        {{log.message[messageIndex]}}
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </template>
 
 <script setup lang="ts">
 import {ref} from 'vue'
- const isOpen = ref(false)
- const logs = ref([{}])
- const originalConsoleLog = console.log
- const originalConsoleWarn = console.warn
- const originalConsoleError = console.error
+const isOpen = ref(false)
+const logs = ref([{}])
+const originalConsoleLog = console.log
+const originalConsoleWarn = console.warn
+const originalConsoleError = console.error
 
 console.log = function() {
     logs.value.push({type: "log", message: [...arguments]})
     originalConsoleLog.apply(console, arguments)
 }
 
-console.warn = function() {
-    logs.value.push({type: "warn", message: [...arguments]})
-    originalConsoleWarn.apply(console, arguments)
+console.warn = function(args) {
+    logs.value.push({type: "warn", message: [...args]})
+    originalConsoleWarn.apply(console, args)
 }
 
-console.error = function() {
-    logs.value.push({type: "error", message: [...arguments]})
-    originalConsoleError.apply(console, arguments)
+console.error = function(args) {
+    logs.value.push({type: "error", message: [...args]})
+    originalConsoleError.apply(console, args)
 }
 
 function toggle() {
