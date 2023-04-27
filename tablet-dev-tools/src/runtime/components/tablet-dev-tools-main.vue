@@ -1,18 +1,24 @@
 <template>
 <div class="log-component">
+    <button @click="toggle">C</button>
+
     <div :class="{open: isOpen}" class="log-inner-component">
         <div class="log-container">
             <div v-for="log, index in logs" :key="index" class="log-screen">
-                <p v-for="messsage, messageIndex in log.message" :key="messageIndex" :class="log.type"><strong>Log:</strong> {{log.message[messageIndex]}}</p>
+                <p v-for="messsage, messageIndex in log.message" :key="messageIndex" :class="log.type">
+                    <strong v-if="log.type==='log'">Log:</strong> 
+                    <strong v-else-if="log.type==='warn'">Warning:</strong> 
+                    <strong v-else-if="log.type==='error'">Error:</strong> 
+                    {{log.message[messageIndex]}}
+                </p>
             </div>
         </div>
     </div>
-    <button @click="toggle">C</button>
 </div>
 </template>
 
 <script setup lang="ts">
-import {ref, onMounted, onBeforeUnmount, watch} from 'vue'
+import {ref} from 'vue'
  const isOpen = ref(false)
  const logs = ref([{}])
  const originalConsoleLog = console.log
@@ -41,11 +47,22 @@ function toggle() {
 </script>
 
 <style scoped>
-.log-component{
+.log-component {
     position: absolute;
     right: 0;
     bottom: 5rem;
+    display: flex;
+    align-items: center;
 
+}
+button {
+    background-color: #f87400;
+    color:white;
+    width: 3rem;
+    height: 3rem;
+    transform: translateX(1rem);
+    border: 5px solid black;
+    border-radius: 100%;
 }
 .log-inner-component {
     transition: width 200ms ease-in-out;
@@ -58,6 +75,9 @@ function toggle() {
 .log-container{
     height: 100%;
     width: 100%;
+    border-top: 5px solid #f87400;
+    border-bottom: 5px solid #f87400;
+    border-left: 5px solid #f87400;
     background-color: black;
     overflow: scroll;
     padding: 1rem;
