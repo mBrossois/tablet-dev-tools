@@ -1,4 +1,6 @@
 export default defineNuxtConfig({
   modules: ['../src/module'],
-  devToolsTablet: {}
+  developerToolsTablet: {
+    enabled: true
+  }
 })
