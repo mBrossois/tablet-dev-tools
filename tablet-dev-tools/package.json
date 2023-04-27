@@ -1,6 +1,6 @@
 {
   "name": "tablet-developer-tools",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Nuxt module for debugging on tablets",
   "repository": "mBrossois/tablet-dev-tools",
   "license": "MIT",
